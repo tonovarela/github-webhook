@@ -11,10 +11,10 @@ export class GitHubController {
 
 
   public weebHookHandler = (req: Request, res: Response) => {
+    
     const payload = req.body;
     const githubEvent = req.headers['x-github-event'] ?? 'unknown';
     let message: string;
-
     switch (githubEvent) {
       case 'star':
         message = this.gitHubService.onStar(payload);
